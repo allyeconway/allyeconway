@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PA Cities Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        #map { height: 600px; width: 100%; }
+        body { font-family: Arial, sans-serif; margin: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Pennsylvania Cities</h1>
+    <div id="map"></div>
+    
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        const map = L.map('map').setView([40.1, -76.5], 9);
+        
+        L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
+            attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community'
+        }).addTo(map);
+        
+        L.circle([40.2732, -76.8867], {radius: 5000, fillColor: 'blue', fillOpacity: 0.6, color: 'gold', weight: 3}).addTo(map).bindTooltip('<b>Name:</b> <i>Harrisburg</i><br><b>Population:</b> <i>50099</i>');
+        L.circle([40.0379, -76.3055], {radius: 5000, fillColor: 'blue', fillOpacity: 0.6, color: 'red', weight: 3}).addTo(map).bindTooltip('<b>Name:</b> <i>Lancaster</i><br><b>Population:</b> <i>58039</i>');
+    </script>
+</body>
+</html>

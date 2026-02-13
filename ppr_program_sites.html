@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Basic Leaflet Map</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
+</head>
+
+<body>
+
+  <div id="map" style="width: 600px; height: 400px"></div>
+
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <script src="places.json"></script>
+
+  <script>
+
+    var map = L.map('map').setView([0, 0], 1);
+
+    L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/outdoors-v12/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+  attribution: '© <a href="https://www.mapbox.com/">Mapbox</a>',
+  tileSize: 512,
+  zoomOffset: -1,
+  accessToken: 'pk.eyJ1IjoiYWxseWNvbiIsImEiOiJjazg2ZmY2NmYwNGpyM21veHlnaXkxaG8zIn0.hEL5hZq33bycHTiiExV7Wg'
+}).addTo(map);
+
+    var ppr_Sites = L.geoJson(places, {
+        pointToLayer: function(feature,latlng) {
+              console.log(feature.properties)
+              return L.circleMarker(latlng, {
+                radius: 10, 
+                color: 'green',
+                fillColor: 'green',
+                fillOpacity: 0.8
+                  //step4
+              });   
+          },
+
+
+/* filter: function(feature, layer){
+          if(feature.properties.name === 'Lisbon'){
+              return true
+                        }
+      } */
+      filter: function(feature, layer){
+          if(feature.properties.park_name === "Frank Glavin Playground"){
+              return true
+                        };
+        
+      }
+    }).addTo(map);
+
+    map.fitBounds(ppr_Sites.getBounds());
+
+  </script>
+
+</body>
+</html>

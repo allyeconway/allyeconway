@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <title>module5</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: whitesmoke;
+            font-family: Lato, sans-serif;
+            color: #0D0000;
+        }
+        header {
+            padding: 6px 10%;
+        }
+        h1 {
+            display: inline-block;
+            margin-right: 20px;
+            color: #001323;
+        }
+        h2 {
+            display: inline-block;
+            color: #001323;
+        }
+        #map {
+            width: 80%;
+            height: 540px;
+            margin: 10px auto;
+        }
+        footer {
+            padding: 6px 10%;
+            width: 80%;
+        }
+        p {
+            font-size: 1em;
+            color: #001323;
+        }
+        .legend-bio {
+            color: #33a02c;
+        }
+        .legend-geo {
+            color: #ff7700;
+        }
+        .legend-solar {
+            color: #ffe600;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Alternative Energy Sources Across the U.S.</h1>
+        <h2>Mega Wat Capacity of Biomass, Geothermal, and Solar Energy Plants. </h2>
+    </header>
+
+    <div id='map'></div>
+
+    <footer>
+        <p>Map authored by Allyson Conway</p>
+        <p>Additional information about the data and map goes here.</p>
+    </footer>
+
+    <script src="power-plants.js"></script>
+    <script>
+
+      var map = L.map('map', {
+          center: [36,-94],
+          zoom: 4,
+      });
+      
+      var tiles = L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
+          attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
+          subdomains: 'abcd',
+          maxZoom: 19
+      });  
+      
+      tiles.addTo(map);
+         
+      // According to leaflet documetnation getRadius() function returns the current radius of a cirlce 
+      // The function is used alongside Math.sqrt to adjust the size of each sumbol to account for output of each fuel source. 
+      function getRadius(capacity){
+          var radius = Math.sqrt(capacity/Math.PI);
+          return radius * 0.8;
+      }
+    
+      // pointToLayer function is used to define how geojson points become leaflet layers 
+      // Using the json feature and latlong, the point is returned as a circle marker using L.circleMarker 
+      // L.circleMarker then calls on the getRadius function which has the radius calculation for each fuel source. This one would be the fuel source for the biomass layer. 
+      var bioLayer = L.geoJson(plants, {
+          pointToLayer: function(feature, latlng) {
+              return L.circleMarker(latlng, {
+                  color: '#33a02c',
+                  weight: 1,
+                  fillColor: '#33a02c',
+                  fillOpacity: 0.6,
+                  radius: getRadius(feature.properties.capacity_mw)
+              });   
+          },
+          filter: function(feature) {
+              return feature.properties.fuel_source['Biomass'];
+          },
+          // According to leaflet onEachFeature is a function that attaches events and popups to each feature.
+          onEachFeature: function(feature, layer) {
+              
+              var popup = "<b>" + feature.properties.plant_name + "</b><br>" +
+                          feature.properties.capacity_mw.toLocaleString() + " MW";
+              layer.bindPopup(popup);
+          }
+      });
+      
+      
+      var geoLayer = L.geoJson(plants, {
+          pointToLayer: function(feature, latlng) {
+              return L.circleMarker(latlng, {
+                  color: 'ff7700',
+                  weight: 1,
+                  fillColor: '#ff7700',
+                  fillOpacity: 0.6,
+                  radius: getRadius(feature.properties.capacity_mw)
+              });   
+          },
+          filter: function(feature) {
+              return feature.properties.fuel_source['Geothermal'];
+          },
+          onEachFeature: function(feature, layer) {
+              // Step 5: Popup on click
+              var popup = "<b>" + feature.properties.plant_name + "</b><br>" +
+                          feature.properties.capacity_mw.toLocaleString() + " MW";
+              layer.bindPopup(popup);
+          }
+      });
+      
+      
+      var solarLayer = L.geoJson(plants, {
+          pointToLayer: function(feature, latlng) {
+              return L.circleMarker(latlng, {
+                  color: '#ffe600',
+                  weight: 1,
+                  fillColor: '#ffe600',
+                  fillOpacity: 0.6,
+                  radius: getRadius(feature.properties.capacity_mw)
+              });   
+          },
+          filter: function(feature) {
+              return feature.properties.fuel_source['Solar'];
+          },
+          onEachFeature: function(feature, layer) {
+              // Step 5: Popup on click
+              var popup = "<b>" + feature.properties.plant_name + "</b><br>" +
+                          feature.properties.capacity_mw.toLocaleString() + " MW";
+              layer.bindPopup(popup);
+          }
+      });
+      
+      
+      var sourcesLayers = {
+          "<span class='legend-bio'>Biomass</span>": bioLayer,
+          "<span class='legend-geo'>Geothermal</span>": geoLayer,
+          "<span class='legend-solar'>Solar</span>": solarLayer
+      };
+      
+      L.control.layers(null, sourcesLayers, { collapsed: false }).addTo(map);
+      
+      
+      bioLayer.addTo(map);
+      geoLayer.addTo(map);
+      solarLayer.addTo(map);
+          
+    </script>
+    
+</body>
+
+</html>

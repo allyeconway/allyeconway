@@ -1,0 +1,114 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>Data-driven continuous color | Sample | ArcGIS Maps SDK for JavaScript 4.28</title>
+
+    <link rel="stylesheet" href="https://js.arcgis.com/4.28/esri/themes/light/main.css" />
+    <script src="https://js.arcgis.com/4.28/"></script>
+
+    <style>
+      html,
+      body,
+      #viewDiv {
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+
+    <script>
+      require([
+        "esri/Map",
+        "esri/views/MapView",
+        "esri/layers/FeatureLayer",
+        "esri/widgets/Legend"
+      ], (Map, MapView, FeatureLayer, Legend) => {
+
+        const defaultSym = {
+          type: "simple-fill",
+          outline: {
+            color: [50, 50, 50, 0.9],
+            width: "0.5 px"
+          }
+        };
+
+        const renderer = {
+          type: "simple",
+          symbol: defaultSym,
+          label: "Block Group",
+          visualVariables: [
+            {
+              type: "color",
+              field: "Point_Count",
+              legendOptions: {
+                title: "Number of Recorded Incidents"
+              },
+              stops: [
+                {
+                  value: 0,
+                  color: "#D3D3D3",
+                  label: "0"
+                },
+                {
+                  value: 50,
+                  color: "#A8C8E8",
+                  label: "50"
+                },
+                {
+                  value: 100,
+                  color: "#5A9EC9",
+                  label: "100"
+                },
+                {
+                  value: 150,
+                  color: "#1E5FA3",
+                  label: "150"
+                },
+                {
+                  value: 200,
+                  color: "#00008B",
+                  label: "200+"
+                }
+              ]
+            }
+          ]
+        };
+
+        const povLayer = new FeatureLayer({
+          url: "https://services.arcgis.com/V6ZHFr6zdgNZuVG0/ArcGIS/rest/services/SF%20Night%20Crimes%20by%20Block%20Groups/FeatureServer/0",
+          renderer: renderer,
+          title: "Number of Nighttime Crimes per Census Block Group in San Francisco (2014)",
+          popupTemplate: {
+            title: "{NAMELSAD}",
+            content: "There were {Point_Count} incidents per block group"
+          }
+        });
+
+        const map = new Map({
+          basemap: "dark-gray-vector",
+          layers: [povLayer]
+        });
+
+        const view = new MapView({
+          container: "viewDiv",
+          map: map,
+          center: [-122.4194, 37.7749], // San Francisco
+          zoom: 11
+        });
+
+        view.ui.add(
+          new Legend({
+            view: view
+          }),
+          "bottom-left"
+        );
+      });
+    </script>
+  </head>
+
+  <body>
+    <div id="viewDiv"></div>
+  </body>
+</html>

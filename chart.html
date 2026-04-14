@@ -1,0 +1,64 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  </head>
+  <body>
+    <div id="barchart" style="width: 900px; height: 500px;"></div>
+    <div id="linechart" style="width: 900px; height: 500px; margin-top: 20px;"></div>
+    <script>
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawCharts);
+
+      function drawCharts() {
+        drawBarChart();
+        drawLineChart();
+      }
+
+      function drawBarChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Bird', 'Speed (mph)'],
+          ['Peregrine Falcon', 242],
+          ['Saker Falcon', 200],
+          ['Golden Eagle', 150],
+          ['Gyrfalcon', 130],
+          ['White Throated Needletail', 105]
+        ]);
+
+        var options = {
+          title: 'Fastest Birds and their Speed',
+          hAxis: { title: 'Max Air Speed (mph)' },
+          vAxis: { title: 'Bird Name', minValue: 0 },
+          colors: ['#8faa8b'],
+          legend: { position: 'none' }
+        };
+
+        var chart = new google.visualization.BarChart(document.getElementById('barchart'));
+        chart.draw(data, options);
+      }
+
+      function drawLineChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Animal',                     'Birds (mph)', 'Land Animals (mph)'],
+          ['Peregrine Falcon vs. Cheetah',         242,           65],
+          ['Saker Falcon vs. Pronghorn',            200,           62],
+          ['Golden Eagle vs. Dorcas Gazelle',       150,           50],
+          ['Gyrfalcon vs. Quarter Horse',           130,           44],
+          ['White Throated Needletail vs. Ostrich', 105,           43.5]
+        ]);
+
+        var options = {
+          title: 'Fastest Birds vs. Fastest Land Animals',
+          hAxis: { title: 'Animal', slantedText: true, slantedTextAngle: 15 },
+          vAxis: { title: 'Top Speed (mph)', minValue: 0 },
+          colors: ['#8faa8b', '#2980b9'],
+          legend: { position: 'top' },
+          curveType: 'function',
+          pointSize: 6
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('linechart'));
+        chart.draw(data, options);
+      }
+    </script>
+  </body>
+</html>

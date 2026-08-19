@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Proportional symbol map of population distribution across Amsterdam." />
+    <meta name="author" content="Allyson Conway" />
+    <title>Proportional Map of Population in Amsterdam — Allyson Conway</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link rel="stylesheet" href="portfolio.css" />
+</head>
+<body>
+
+    <nav class="atlas-nav">
+        <div class="atlas-nav-inner">
+            <a class="atlas-brand" href="index.html">A. Conway<span class="dot">.</span></a>
+            <div class="atlas-tabs">
+                <a href="index.html">Home</a>
+                <a href="project-estes-park.html">Estes Park Trails</a>
+                <a href="project-pa-cities.html">PA Cities</a>
+                <a href="project-ppr-sites.html">PPR Sites</a>
+                <a href="project-energy-sources.html">Energy Sources</a>
+                <a href="project-sf-crime.html">SF Crime</a>
+                <a href="project-amsterdam.html" class="is-active">Amsterdam</a>
+                <a href="project-atlanta-transit.html">Atlanta Transit</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="detail-back">
+        <a href="index.html">&larr; Back to all projects</a>
+    </div>
+
+    <header class="detail-hero">
+        <p class="legend-coord">52.3676° N, 4.9041° E</p>
+        <h1>Proportional Map of Population in Amsterdam</h1>
+        <p class="lede">Population distribution across Amsterdam shown through proportional symbols, with per-region totals available on click.</p>
+        <div class="detail-tools">
+            <span>ArcGIS Maps SDK for JavaScript</span>
+            <span>Hosted Feature Service</span>
+            <span>Esri Basemap</span>
+        </div>
+    </header>
+
+    <main class="detail-body">
+        <div class="detail-block">
+            <p class="kicker">Overview</p>
+            <h2>What this map shows</h2>
+            <p>This map shows how population is distributed across Amsterdam using proportional symbols: larger circles mean more people. Each circle has an attached popup that states the exact total population for that region, so the visual comparison is always backed by an exact number.</p>
+        </div>
+
+        <div class="detail-block">
+            <p class="kicker">Approach</p>
+            <h2>Data &amp; method</h2>
+            <p>Built with the ArcGIS Maps SDK for JavaScript, pulling population figures from a hosted ArcGIS Feature Service and mapping them to circle size, with an Esri basemap underneath for geographic context.</p>
+            <ul>
+                <li>Population data sourced from an ArcGIS Feature Service</li>
+                <li>Circle size scaled proportionally to total population</li>
+                <li>Popups surface the exact population figure per region</li>
+            </ul>
+        </div>
+
+        <div class="detail-block">
+            <p class="kicker">Live Map</p>
+            <h2>Explore it</h2>
+            <div class="map-frame">
+                <iframe src="amsterdam.html" title="Proportional Map of Population in Amsterdam"></iframe>
+            </div>
+        </div>
+    </main>
+
+    <footer class="atlas-footer">
+        <p>Allyson Conway — GIS &amp; Web Mapping Portfolio</p>
+    </footer>
+
+</body>
+</html>

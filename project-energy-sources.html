@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Proportional symbol map of U.S. biomass, geothermal, and solar power plants scaled by capacity." />
+    <meta name="author" content="Allyson Conway" />
+    <title>Proportional Map of Alternative Energy Sources — Allyson Conway</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link rel="stylesheet" href="portfolio.css" />
+</head>
+<body>
+
+    <nav class="atlas-nav">
+        <div class="atlas-nav-inner">
+            <a class="atlas-brand" href="index.html">A. Conway<span class="dot">.</span></a>
+            <div class="atlas-tabs">
+                <a href="index.html">Home</a>
+                <a href="project-estes-park.html">Estes Park Trails</a>
+                <a href="project-pa-cities.html">PA Cities</a>
+                <a href="project-ppr-sites.html">PPR Sites</a>
+                <a href="project-energy-sources.html" class="is-active">Energy Sources</a>
+                <a href="project-sf-crime.html">SF Crime</a>
+                <a href="project-amsterdam.html">Amsterdam</a>
+                <a href="project-atlanta-transit.html">Atlanta Transit</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="detail-back">
+        <a href="index.html">&larr; Back to all projects</a>
+    </div>
+
+    <header class="detail-hero">
+        <p class="legend-coord">39.83° N, 98.58° W</p>
+        <h1>Proportional Map of Alternative Energy Sources</h1>
+        <p class="lede">Biomass, geothermal, and solar power plants across the U.S., with circle markers scaled to each plant's generation capacity.</p>
+        <div class="detail-tools">
+            <span>Leaflet</span>
+            <span>GeoJSON</span>
+            <span>JavaScript</span>
+            <span>CartoDB</span>
+        </div>
+    </header>
+
+    <main class="detail-body">
+        <div class="detail-block">
+            <p class="kicker">Overview</p>
+            <h2>What this map shows</h2>
+            <p>This map takes a nationwide GeoJSON dataset of power plants and narrows it to three alternative energy types: biomass, geothermal, and solar. Each plant is shown as a circle sized by its megawatt generation capacity, so scale differences between facilities are visible at a glance rather than buried in an attribute table.</p>
+        </div>
+
+        <div class="detail-block">
+            <p class="kicker">Approach</p>
+            <h2>Data &amp; method</h2>
+            <p>The dataset required filtering by energy type before it was usable, then the generation-capacity field was mapped to marker radius so the proportional symbology actually meant something.</p>
+            <ul>
+                <li>Source data filtered to Biomass, Geothermal, and Solar plant types</li>
+                <li>Marker radius scaled by generation capacity in megawatts</li>
+                <li>Dark CartoDB basemap chosen to make the colored markers stand out</li>
+            </ul>
+        </div>
+
+        <div class="detail-block">
+            <p class="kicker">Live Map</p>
+            <h2>Explore it</h2>
+            <div class="map-frame">
+                <iframe src="assignment_template1.html" title="Proportional Map of Alternative Energy Sources"></iframe>
+            </div>
+        </div>
+    </main>
+
+    <footer class="atlas-footer">
+        <p>Allyson Conway — GIS &amp; Web Mapping Portfolio</p>
+    </footer>
+
+</body>
+</html>

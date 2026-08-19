@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Reference map of scenic hikes around Estes Park, Colorado, built in ArcGIS Pro." />
+    <meta name="author" content="Allyson Conway" />
+    <title>Trail Map of Scenic Hikes in Estes Park, CO — Allyson Conway</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link rel="stylesheet" href="portfolio.css" />
+</head>
+<body>
+
+    <nav class="atlas-nav">
+        <div class="atlas-nav-inner">
+            <a class="atlas-brand" href="index.html">A. Conway<span class="dot">.</span></a>
+            <div class="atlas-tabs">
+                <a href="index.html">Home</a>
+                <a href="project-estes-park.html" class="is-active">Estes Park Trails</a>
+                <a href="project-pa-cities.html">PA Cities</a>
+                <a href="project-ppr-sites.html">PPR Sites</a>
+                <a href="project-energy-sources.html">Energy Sources</a>
+                <a href="project-sf-crime.html">SF Crime</a>
+                <a href="project-amsterdam.html">Amsterdam</a>
+                <a href="project-atlanta-transit.html">Atlanta Transit</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="detail-back">
+        <a href="index.html">&larr; Back to all projects</a>
+    </div>
+
+    <header class="detail-hero">
+        <p class="legend-coord">40.3772° N, 105.5217° W</p>
+        <h1>Trail Map of Scenic Hikes in Estes Park, CO</h1>
+        <p class="lede">A reference map built for on-trail planning, pulling together a hand-picked set of scenic hikes around Estes Park into a single printable layout.</p>
+        <div class="detail-tools">
+            <span>ArcGIS Pro</span>
+            <span>PDF Export</span>
+            <span>Cartographic Design</span>
+        </div>
+    </header>
+
+    <main class="detail-body">
+        <div class="detail-block">
+            <p class="kicker">Overview</p>
+            <h2>What this map shows</h2>
+            <p>This project set out to answer a simple question for hikers visiting Estes Park: which trails are worth the drive, and how do they compare to each other at a glance? Rather than a general-purpose basemap, the map is scoped tightly to a curated list of scenic hikes, so it reads more like a printed trail guide than a full regional atlas.</p>
+        </div>
+
+        <div class="detail-block">
+            <p class="kicker">Approach</p>
+            <h2>Data &amp; method</h2>
+            <p>The map was built in ArcGIS Pro and exported as a print-ready PDF, which meant paying close attention to label placement, symbol hierarchy, and legend design since the final product has no interactivity to fall back on.</p>
+            <ul>
+                <li>Trail geometry and elevation context sourced from public GIS layers for the Estes Park area</li>
+                <li>Symbology designed for print legibility: trailheads, difficulty tiers, and named peaks each get distinct markers</li>
+                <li>Final layout composed as a standalone reference sheet rather than a web map</li>
+            </ul>
+        </div>
+
+        <div class="detail-block">
+            <p class="kicker">Live Map</p>
+            <h2>Explore it</h2>
+            <div class="map-frame">
+                <iframe src="final_map-1 (1).pdf" title="Trail Map of Scenic Hikes in Estes Park, CO"></iframe>
+            </div>
+        </div>
+    </main>
+
+    <footer class="atlas-footer">
+        <p>Allyson Conway — GIS &amp; Web Mapping Portfolio</p>
+    </footer>
+
+</body>
+</html>

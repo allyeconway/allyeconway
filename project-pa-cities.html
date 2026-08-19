@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Leaflet map comparing Harrisburg and Lancaster, PA with proportional circle markers." />
+    <meta name="author" content="Allyson Conway" />
+    <title>Pennsylvania Cities With Circle Markers — Allyson Conway</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link rel="stylesheet" href="portfolio.css" />
+</head>
+<body>
+
+    <nav class="atlas-nav">
+        <div class="atlas-nav-inner">
+            <a class="atlas-brand" href="index.html">A. Conway<span class="dot">.</span></a>
+            <div class="atlas-tabs">
+                <a href="index.html">Home</a>
+                <a href="project-estes-park.html">Estes Park Trails</a>
+                <a href="project-pa-cities.html" class="is-active">PA Cities</a>
+                <a href="project-ppr-sites.html">PPR Sites</a>
+                <a href="project-energy-sources.html">Energy Sources</a>
+                <a href="project-sf-crime.html">SF Crime</a>
+                <a href="project-amsterdam.html">Amsterdam</a>
+                <a href="project-atlanta-transit.html">Atlanta Transit</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="detail-back">
+        <a href="index.html">&larr; Back to all projects</a>
+    </div>
+
+    <header class="detail-hero">
+        <p class="legend-coord">40.27° N, 76.89° W · 40.03° N, 76.30° W</p>
+        <h1>Pennsylvania Cities With Circle Markers</h1>
+        <p class="lede">Harrisburg and Lancaster plotted with proportional circle markers, with population data surfaced through interactive tooltips.</p>
+        <div class="detail-tools">
+            <span>Leaflet</span>
+            <span>JavaScript</span>
+            <span>HTML/CSS</span>
+            <span>Esri Basemap</span>
+        </div>
+    </header>
+
+    <main class="detail-body">
+        <div class="detail-block">
+            <p class="kicker">Overview</p>
+            <h2>What this map shows</h2>
+            <p>This map compares two Pennsylvania cities, Harrisburg and Lancaster, using circle markers sized to represent relative population. It's a small-scale exercise in proportional symbol mapping: rather than just placing pins, the size of each circle itself carries information.</p>
+        </div>
+
+        <div class="detail-block">
+            <p class="kicker">Approach</p>
+            <h2>Data &amp; method</h2>
+            <p>Built from scratch with the Leaflet JavaScript library rather than a no-code map builder, which meant writing the marker logic, tooltip behavior, and styling directly.</p>
+            <ul>
+                <li>City coordinates and population figures encoded directly as map data</li>
+                <li>Circle marker radius scaled relative to each city's population</li>
+                <li>Interactive tooltips reveal population details on hover or tap</li>
+                <li>Topographic basemap sourced from Esri for geographic context</li>
+            </ul>
+        </div>
+
+        <div class="detail-block">
+            <p class="kicker">Live Map</p>
+            <h2>Explore it</h2>
+            <div class="map-frame">
+                <iframe src="pa_cities_circle.html" title="Pennsylvania Cities With Circle Markers"></iframe>
+            </div>
+        </div>
+    </main>
+
+    <footer class="atlas-footer">
+        <p>Allyson Conway — GIS &amp; Web Mapping Portfolio</p>
+    </footer>
+
+</body>
+</html>

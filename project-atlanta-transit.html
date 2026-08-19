@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Map of transit commuters by census tract in Atlanta, GA, built in R with tidycensus." />
+    <meta name="author" content="Allyson Conway" />
+    <title>Transit Commuters by Census Tract in Atlanta, GA — Allyson Conway</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link rel="stylesheet" href="portfolio.css" />
+</head>
+<body>
+
+    <nav class="atlas-nav">
+        <div class="atlas-nav-inner">
+            <a class="atlas-brand" href="index.html">A. Conway<span class="dot">.</span></a>
+            <div class="atlas-tabs">
+                <a href="index.html">Home</a>
+                <a href="project-estes-park.html">Estes Park Trails</a>
+                <a href="project-pa-cities.html">PA Cities</a>
+                <a href="project-ppr-sites.html">PPR Sites</a>
+                <a href="project-energy-sources.html">Energy Sources</a>
+                <a href="project-sf-crime.html">SF Crime</a>
+                <a href="project-amsterdam.html">Amsterdam</a>
+                <a href="project-atlanta-transit.html" class="is-active">Atlanta Transit</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="detail-back">
+        <a href="index.html">&larr; Back to all projects</a>
+    </div>
+
+    <header class="detail-hero">
+        <p class="legend-coord">33.7490° N, 84.3880° W</p>
+        <h1>Transit Commuters by Census Tract in Atlanta, GA</h1>
+        <p class="lede">Census-tract level transit ridership for Atlanta, pulled directly from the Census API and mapped in R.</p>
+        <div class="detail-tools">
+            <span>R</span>
+            <span>tidycensus</span>
+            <span>ggplot2</span>
+        </div>
+    </header>
+
+    <main class="detail-body">
+        <div class="detail-block">
+            <p class="kicker">Overview</p>
+            <h2>What this map shows</h2>
+            <p>This map looks at transit commuting patterns across Atlanta at the census tract level. Instead of working from a pre-packaged shapefile, the underlying data was pulled directly from the Census Bureau via R, keeping the whole workflow, from data pull to final map, inside a single script.</p>
+        </div>
+
+        <div class="detail-block">
+            <p class="kicker">Approach</p>
+            <h2>Data &amp; method</h2>
+            <p>Built entirely in R using the tidycensus package, which handles authentication and querying against the Census API and returns tract-level geometry ready to map.</p>
+            <ul>
+                <li>Commuting-by-transit estimates pulled via tidycensus from Census API data</li>
+                <li>Tract-level geometries joined directly to the commuting estimates</li>
+                <li>Final map rendered and exported as a static PDF</li>
+            </ul>
+        </div>
+
+        <div class="detail-block">
+            <p class="kicker">Live Map</p>
+            <h2>Explore it</h2>
+            <div class="map-frame">
+                <iframe src="exercise_3a.pdf" title="Transit Commuters by Census Tract in Atlanta, GA"></iframe>
+            </div>
+        </div>
+    </main>
+
+    <footer class="atlas-footer">
+        <p>Allyson Conway — GIS &amp; Web Mapping Portfolio</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Choropleth map of nighttime crime incidents in San Francisco by census block group." />
+    <meta name="author" content="Allyson Conway" />
+    <title>Choropleth Map of Nighttime Crime Incidents in San Francisco — Allyson Conway</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link rel="stylesheet" href="portfolio.css" />
+</head>
+<body>
+
+    <nav class="atlas-nav">
+        <div class="atlas-nav-inner">
+            <a class="atlas-brand" href="index.html">A. Conway<span class="dot">.</span></a>
+            <div class="atlas-tabs">
+                <a href="index.html">Home</a>
+                <a href="project-estes-park.html">Estes Park Trails</a>
+                <a href="project-pa-cities.html">PA Cities</a>
+                <a href="project-ppr-sites.html">PPR Sites</a>
+                <a href="project-energy-sources.html">Energy Sources</a>
+                <a href="project-sf-crime.html" class="is-active">SF Crime</a>
+                <a href="project-amsterdam.html">Amsterdam</a>
+                <a href="project-atlanta-transit.html">Atlanta Transit</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="detail-back">
+        <a href="index.html">&larr; Back to all projects</a>
+    </div>
+
+    <header class="detail-hero">
+        <p class="legend-coord">37.7749° N, 122.4194° W</p>
+        <h1>Choropleth Map of Nighttime Crime Incidents in San Francisco</h1>
+        <p class="lede">Census block groups shaded by nighttime crime incident counts, with a click-through popup and a threshold legend.</p>
+        <div class="detail-tools">
+            <span>ArcGIS Maps SDK for JavaScript</span>
+            <span>Hosted Feature Service</span>
+        </div>
+    </header>
+
+    <main class="detail-body">
+        <div class="detail-block">
+            <p class="kicker">Overview</p>
+            <h2>What this map shows</h2>
+            <p>This choropleth map visualizes nighttime crime incidents across San Francisco at the census block group level. Darker block groups indicate more recorded incidents; lighter ones indicate fewer. Clicking any block group opens a popup with the exact incident count for that area.</p>
+        </div>
+
+        <div class="detail-block">
+            <p class="kicker">Approach</p>
+            <h2>Data &amp; method</h2>
+            <p>Built on the ArcGIS Maps SDK for JavaScript against a hosted ArcGIS Feature Service, which handled the underlying crime data. The main design work was in the color ramp and the legend, so the thresholds read clearly without a data dictionary.</p>
+            <ul>
+                <li>Data source: hosted ArcGIS Feature Service of nighttime crime incidents by block group</li>
+                <li>Color gradient symbology tied to incident count</li>
+                <li>Click-to-reveal popups with exact per-block-group counts</li>
+                <li>Legend built around defined crime-count thresholds</li>
+            </ul>
+        </div>
+
+        <div class="detail-block">
+            <p class="kicker">Live Map</p>
+            <h2>Explore it</h2>
+            <div class="map-frame">
+                <iframe src="sf_night.html" title="Choropleth Map of Nighttime Crime Incidents in San Francisco"></iframe>
+            </div>
+        </div>
+    </main>
+
+    <footer class="atlas-footer">
+        <p>Allyson Conway — GIS &amp; Web Mapping Portfolio</p>
+    </footer>
+
+</body>
+</html>
